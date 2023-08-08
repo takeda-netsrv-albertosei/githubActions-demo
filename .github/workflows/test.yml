@@ -22,13 +22,13 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
           ls ${{ github.workspace }}
           echo "🍏 This job's status is ${{ job.status }}."
-
+#new action to compress files 
       - name: Compress txt with gzip
         id: step1
         uses: coco-hkk/compress-action@v2.1
         with:
           file-suffix: 'txt'
-          target-directory-path: 'tes'
+          target-directory-path: 'C:\Users\aje0054\OneDrive - Takeda\Downloads\Github Actions\requirements.txt'
           compress-tool: 'gzip'
 
       - name: Get archive
@@ -36,5 +36,5 @@ jobs:
           if [ "0"x != "${{ steps.step1.outputs.state }}"x ]; then
             echo "archive create failed, exit"
           else
-            tar -tzvf ${{ steps.step1.outputs.archive }}
+            tar -tzvf ${{ steps.step1.outputs.archive }} # testing action on push trigger
           fi
