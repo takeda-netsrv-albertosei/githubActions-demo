@@ -22,7 +22,7 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
           ls ${{ github.workspace }}
           echo "🍏 This job's status is ${{ job.status }}."
-
+#new action to compress files 
       - name: Compress txt with gzip
         id: step1
         uses: coco-hkk/compress-action@v2.1
