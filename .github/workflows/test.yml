@@ -36,5 +36,5 @@ jobs:
           if [ "0"x != "${{ steps.step1.outputs.state }}"x ]; then
             echo "archive create failed, exit"
           else
-            tar -tzvf ${{ steps.step1.outputs.archive }}
+            tar -tzvf ${{ steps.step1.outputs.archive }} # testing action on push trigger
           fi
