@@ -1,0 +1,40 @@
+name: GitHub Actions Demo
+on:
+  push:
+    branches:
+      - '*'
+    
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Display event information
+        run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+          ls ${{ github.workspace }}
+          echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Compress txt with gzip
+        id: step1
+        uses: coco-hkk/compress-action@v2.1
+        with:
+          file-suffix: 'txt'
+          target-directory-path: 'tes'
+          compress-tool: 'gzip'
+
+      - name: Get archive
+        run: |
+          if [ "0"x != "${{ steps.step1.outputs.state }}"x ]; then
+            echo "archive create failed, exit"
+          else
+            tar -tzvf ${{ steps.step1.outputs.archive }}
+          fi
