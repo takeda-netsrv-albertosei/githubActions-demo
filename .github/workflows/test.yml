@@ -25,7 +25,7 @@ jobs:
 #new action to compress files 
       - name: Compress txt with gzip
         id: step1
-        uses: coco-hkk/compress-action@v2.1
+        uses: zipFile.py
         with:
           file-suffix: 'txt'
           target-directory-path: 'C:\Users\aje0054\OneDrive - Takeda\Downloads\Github Actions\requirements.txt'
